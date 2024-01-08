@@ -43,6 +43,13 @@ else
     failed "Less than 2 encrypted partitions using LVM are created."
 fi
 
+# Check for the X server
+if ! command -v Xorg >/dev/null 2>&1; then
+    passed "No GUI is installed on this system."
+else
+    failed "A GUI is installed on this system."
+fi
+
 # Check if SSH is running on port 4242
 ssh_check=$(sudo lsof -i :4242 | grep sshd)
 
