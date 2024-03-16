@@ -73,7 +73,7 @@ else
 fi
 
 # Check if logical partitions are encrypted LVM and mounted correctly
-partitions=("home" "var" "srv" "tmp" "var-log")
+partitions=("home" "var" "srv" "tmp" "var/log")
 
 for partition in "${partitions[@]}"; do
 	exists=false
@@ -144,7 +144,7 @@ else
 fi
 
 # Check if port 4242 and 80 are open for both IPv4 and IPv6
-open_ports=$(sudo ufw status | grep -o "[0-9]*/tcp.*ALLOW.*" | cut -d' ' -f1)
+open_ports=$(sudo ufw status | grep -o "[0-9]*.*ALLOW.*" | cut -d' ' -f1)
 expected_ports=("4242/tcp" "80/tcp" "443")
 
 for port in "${expected_ports[@]}"; do
